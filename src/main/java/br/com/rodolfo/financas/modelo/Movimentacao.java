@@ -2,6 +2,7 @@ package br.com.rodolfo.financas.modelo;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,8 +41,10 @@ public class Movimentacao {
     //Muitas movimentações para uma conta. O JPA realiza a relação entre as duas tabelas, colocando a chave estrangeira na tabela 'movimentacao'
     @ManyToOne
 	private Conta conta;
-	
     
+    //Muitas movimentações para muitas categorias. 
+    @ManyToMany
+    private List<Categoria> categoria;
 
     /**
      * @return int return the id
@@ -124,6 +128,21 @@ public class Movimentacao {
      */
     public void setConta(Conta conta) {
         this.conta = conta;
+    }
+
+
+    /**
+     * @return List<Categoria> return the categoria
+     */
+    public List<Categoria> getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(List<Categoria> categoria) {
+        this.categoria = categoria;
     }
 
 }

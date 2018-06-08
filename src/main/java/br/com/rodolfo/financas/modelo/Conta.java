@@ -13,7 +13,7 @@ public class Conta {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     
     private String titular;
     private String numero;
@@ -62,5 +62,20 @@ public class Conta {
 
 
 
+
+
+    /**
+     * @return Integer return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 }
