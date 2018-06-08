@@ -14,6 +14,7 @@
 
         <!-- Aqui são listadas todas as entidades -->
         <class>br.com.rodolfo.financas.modelo.Conta</class>
+        <class>br.com.rodolfo.financas.modelo.Movimentacao</class>
 
         <properties>    
             <!-- Propriedades JDBC -->
