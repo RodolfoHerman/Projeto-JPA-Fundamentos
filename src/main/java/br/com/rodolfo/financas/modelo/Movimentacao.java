@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +20,8 @@ import javax.persistence.TemporalType;
  * Movimentacoes
  */
 @Entity
+//Utiliando "function(nome, campo, formato)" podemos invocar as funções nativas do MySQL ou de qualquer outro banco de dados para utilização
+@NamedQuery(query="SELECT AVG(m.valor) FROM Movimentacao m WHERE m.conta = :pConta AND m.tipo = :pTipo GROUP BY function('DATE_FORMAT', m.data, '%Y-%m-%d')", name="MediaMovimentacoes")
 public class Movimentacao {
 
     @Id
