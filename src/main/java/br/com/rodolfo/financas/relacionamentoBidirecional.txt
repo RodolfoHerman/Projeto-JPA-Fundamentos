@@ -1,0 +1,14 @@
+Então, temos duas anotações de relacionamento (@ManyToOne na classe Mvimentacao e @OneToMany na classe Conta), o que faz com que o JPA conheça-as como dois relacionamentos independentes, o que na verdade não é o que queremos.
+
+Queremos que @OneToMany represente o mesmo relacionamento que estávamos fazendo anteriormente com @ManyToOne na classe Movimentacao. Esta anotação serve apenas para refletir um relacionamento que existe na outra parte.
+
+Isto se confirma ao digitarmos show tables; no terminal, pois vimos que foi criada uma nova classe, Conta_Movimentacao, para representar o relacionamento @OneToMany que acabamos de criar.
+
+O que queremos é que ambas as partes representem o mesmo relacionamento. Para isto, precisaremos escolher "a parte forte", que cria o relacionamento, a coluna de chave estrangeira (conta_id), que no nosso caso é @ManyToOne na classe Movimentacao.
+
+@OneToMany, a parte que reflete, já foi mapeada por uma coluna chamada conta, do outro lado, na classe Movimentacao
+
+Sendo assim colocamos a anotação: 
+
+@OneToMany(mappedBy="conta")
+private List<Movimentacao> movimentacoes;
